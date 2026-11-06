@@ -1,0 +1,50 @@
+
+.container {
+display: flex; 
+flex-direction: column; 
+height: 100%; 
+padding:4px 16px;
+}
+.agentsList { 
+display: flex; 
+flex-direction: column; 
+gap: 16px; 
+
+}
+.agentCard { 
+display: grid; 
+grid-template-columns:50px 1fr;
+column-gap:10px;
+align-items: center; 
+
+border:1px solid var(--green)
+}
+.agentCard:hover {
+  background:var(--green-grid);
+ cursor:pointer; 
+}
+
+.agentImage {
+width: 46px; 
+height: 60px;
+border:1px solid var(--cream);
+justify-self:center;
+background: var(--blue); 
+}
+
+.agentDescription { 
+display: flex; 
+flex-direction: column; 
+
+min-width:0;
+}
+.name { 
+font-size: 22px; 
+line-height: 1.1; 
+font-weight:thin;
+color:var(--cream)
+}
+.meta { 
+line-height: 1.2; 
+}
+.footer { margin-top: auto; }
