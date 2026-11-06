@@ -1,0 +1,21 @@
+.container {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom: 4px solid var(--red)
+}
+
+.logoContainer {
+  display:flex;
+  gap:4px;
+  align-items:center;
+  padding:0px 14px;
+}
+
+
+.actionButtons {
+  display:flex;
+  gap:4px;
+  padding:16px 4px;
+  align-items:center;
+}
