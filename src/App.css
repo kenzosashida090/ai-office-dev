@@ -1,0 +1,15 @@
+.agents {
+  grid-area: agents;
+  min-height: 0;
+  overflow-y:auto;
+}
+
+.office {
+  grid-area: office;
+  min-width: 0;
+}
+
+.panel {
+  grid-area: panel;
+  min-height:0;
+}
