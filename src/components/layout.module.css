@@ -1,0 +1,23 @@
+
+.layout {
+  display:flex;
+  flex-direction:column;
+  height: 100vh;
+}
+
+.main {
+  flex:1;
+  min-height:0;
+  display:grid;
+  grid-template-columns: 300px minmax(0,1fr) 0px;
+  grid-template-areas: "agents office panel";
+  transition: grid-template-columns 300ms ease;
+}
+.layout[data-panel="open"] .main {
+  grid-template-columns: 300px minmax(0, 1fr) 410px;
+}
+
+.layout[data-panel="closed"] .main {
+  grid-template-columns: 300px minmax(0,1fr);
+  grid-template-areas: "agents office"
+}
