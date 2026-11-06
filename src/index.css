@@ -1,0 +1,152 @@
+:root {
+  /* Surfaces */
+  --bg:            #050806;  /* app background, near-black */
+  --bg-panel:      #07110a;  /* office floor / inset areas */
+  --bg-active:     #0b2a14;  /* selected or working agent card */
+  --bg-blue-dark:  #0b1a3a;  /* Dwight's desk mat */
+  --bg-amber-dark: #2a2308;  /* Jim's desk mat */
+
+  /* Green (the main terminal color) */
+  --green:         #2cff6b;  /* borders, active buttons, highlights */
+  --green-text:    #8dffb0;  /* body text */
+  --green-grid:    #2cff6b1a; /* faint floor grid lines */
+
+  /* Neutrals */
+  --text-strong:   #c9d3cf;  /* names, titles */
+  --line-light:    #cfd8c0;  /* light borders on the banner, wall, and avatars */
+  --progress:      #9aa6b8;  /* progress bar fill */
+
+  /* Accents */
+  --blue:          #1f55d6;  /* banner and avatar tiles */
+  --cream:         #f2f0c8;  /* text on blue */
+  --teal:          #2a9a98;  /* banner stripes */
+  --amber:         #ffd23a;  /* "1 for you", alerts, Jim's sprite */
+  --red:           #e5342a;  /* header rule, stop button border */
+  --red-text:      #ff7a5c;  /* stop button text */
+  --agent-blue:    #3aa0ff;  /* Dwight's sprite */
+
+  /* Overlays */
+  --scanline:      #00000030;
+  --vignette:      #000b;
+
+  /* Type */
+  --font-mono:     'Share Tech Mono', monospace;
+  --font-display:  'Archivo', sans-serif; /* weight 800, titles only */
+}
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Increase line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+/* Base */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--green-text);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  overflow: hidden;          /* the app is one fixed screen; panes scroll inside */
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--text-strong);
+}
+
+/* Buttons */
+button {
+  background: var(--bg);
+  color: var(--green-text);
+  border: 2px solid var(--green);
+  padding: 0 12px;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--green);
+  color:black;
+}
+
+button[aria-pressed="true"],
+button.primary {
+  background: var(--green);
+  color: #03140a;
+}
+
+button.danger {
+  color: var(--red-text);
+  border-color: var(--red);
+}
+
+/* Keyboard focus, which the mockup was missing */
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+/* CRT overlay: scanlines and vignette over everything, ignoring clicks */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(0deg, var(--scanline) 0 1px, transparent 1px 3px);
+  box-shadow: inset 0 0 110px var(--vignette);
+}
